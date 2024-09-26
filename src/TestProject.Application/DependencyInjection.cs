@@ -1,6 +1,8 @@
 ﻿
 namespace TestProject.Application;
 
-internal class DependencyInjection
+public static class DependencyInjection
 {
+
+
 }
