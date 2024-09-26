@@ -3,7 +3,7 @@ using TestProject.Core.Common;
 
 namespace TestProject.Application.Services.Interfaces;
 
-public interface IUserServices
+public interface IUserService
 {
     Task<PagedResult<UserDto>> GetListAsync(int pageNumber, int pageSize);
     Task<UserDto> GetAsync(long id);
