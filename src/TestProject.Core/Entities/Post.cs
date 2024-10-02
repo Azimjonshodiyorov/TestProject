@@ -9,6 +9,8 @@ public class Post : BaseEntity
     public string Title { get; set; }
     [Column("description")]
     public string Description { get; set; }
+    [Column("author")]
+    public string Author { get; set; }
     [Column("user_id")]
     public long UserId { get; set; }
     [NotMapped]

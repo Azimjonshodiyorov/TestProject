@@ -42,20 +42,20 @@ public class UserService : IUserService
         if (user is null)
             throw new Exception("User service delete error");
         await this._unitOfWork.Users.DeleteAsync(user);
-        await this._unitOfWork.SaveChangesAsync();
+        await this._unitOfWork.SaveChangesAsync(); 
         var result = this._mapper.Map<UserDto>(user) ;
         return result;
-    }
+    }        
 
     public async Task<UserDto> GetAsync(long id)
-    {
+    {  
          var user = await this._unitOfWork.Users.GetAsync(id);
         if (user is null)
             throw new Exception("User service Get error");
-        var result = this._mapper.Map<UserDto>(user);
-        return result;
+        var result = this._mapper.Map<UserDto>(user); 
+        return result; 
 
-    }
+    } 
 
     public async Task<PagedResult<UserDto>> GetListAsync(int pageNumber, int pageSize)
     {

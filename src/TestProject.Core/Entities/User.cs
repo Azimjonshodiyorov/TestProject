@@ -21,7 +21,7 @@ public class User : BaseEntity
     public string Password { get; set; }
     [Column("email")]
     public string Email { get; set; }
-    [NotMapped]
+    [NotMapped] 
     public ICollection<Post> Posts { get; set; }
 
 }

@@ -20,24 +20,21 @@ public class PostService : IPostService
     }
     public async Task<PostDto> CreateAsync(CreateUserDto dto)
     {
-        var post = _mapper.Map<Post>(dto);
+        var post = _mapper.Map<Post>(dto);           
         await this._unitOfWork.Posts.AddAsync(post);
         await this._unitOfWork.SaveChangesAsync();
         var result = this._mapper.Map<PostDto>(post);
         return result;
     }
-
     public async Task<PostDto> DeleteAsync(long id)
     {
         var post = await this._unitOfWork.Posts.GetAsync(id);
-        if (post is null)
-            throw new Exception("Post Service error is delete");
+        if (post is null)   throw new Exception("Post Service error is delete");
         await this._unitOfWork.Posts.DeleteAsync(post);
         await this._unitOfWork.SaveChangesAsync();
         var result = _mapper.Map<PostDto>(post);
         return result;
     }
-
     public async Task<PostDto> GetAsync(long id)
     {
         var post = await _unitOfWork.Posts.GetAsync(id);
@@ -45,7 +42,6 @@ public class PostService : IPostService
         var result = _mapper.Map<PostDto>(post);
         return result;
     }
-
     public async Task<PagedResult<PostDto>> GetListAsync(int pageNumber, int pageSize)
     {
         var query = this._unitOfWork.Posts.Entities.AsQueryable();
@@ -62,7 +58,6 @@ public class PostService : IPostService
             paged.PageSize
         );
     }
-
     public async Task<PostDto> UpdateAsync(UpdateUserDto dto)
     {
         var post = this._mapper.Map<Post>(dto);
